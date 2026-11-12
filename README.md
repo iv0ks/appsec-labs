@@ -47,30 +47,38 @@ Each repo ships with a `SOLUTION.md` walkthrough (spoilers) and a flag of the fo
 
 <br>
 
-## 🧪 Series 2 — Broken Access Control / IDOR (CWE-639 / CWE-284)
+### 🧪 Series 2 — Broken Access Control / IDOR (CWE-639 / CWE-284)
 
 Six apps, one vulnerability class, increasing difficulty — from reading another user's record to full role escalation. Horizontal IDOR first (levels 1–4), then
 vertical privilege escalation (levels 5–6). Built in the **Node** ecosystem (TypeScript), each with a seeded set of identities so "accessing what isn't
 yours" is a concrete, capturable goal.
 
-> 📖 **New to the topic?** Start with the
-> **[Broken Access Control field guide](docs/broken-access-control.md)** — what
-> the bug is, authentication vs authorization, and how to test for it
-> methodically with two accounts using Burp Suite and OWASP ZAP. Each lab's
-> `GUIDE.md` builds on it.
-
-| #   | Lab                                             | Stack          | Difficulty | The flaw                                              |
-| --- | ----------------------------------------------- | -------------- | ---------- | ----------------------------------------------------- |
-| 1   | [ledgerly](https://github.com/iv0ks/ledgerly)   | Node · Express | ⭐         | read IDOR — no ownership check on `GET /invoices/:id` |
-| 2   | [pingboard](https://github.com/iv0ks/pingboard) | Node · NestJS  | ⭐⭐       | write IDOR / mass assignment on user update           |
-| 3   | [tasknest](https://github.com/iv0ks/tasknest)   | Node · NestJS  | ⭐⭐⭐     | missing tenant isolation (cross-org access)           |
-| 4   | [cartora](https://github.com/iv0ks/cartora)     | Next.js        | ⭐⭐⭐     | server trusts a client-supplied identity              |
-| 5   | [opsdeck](https://github.com/iv0ks/opsdeck)     | Next.js        | ⭐⭐⭐⭐   | vertical escalation — role check only in the UI       |
-| 6   | [vaultpass](https://github.com/iv0ks/vaultpass) | Node · NestJS  | ⭐⭐⭐⭐   | broken auth trust — a manipulable JWT claim           |
-
 Levels 1–4 are **horizontal** IDOR (CWE-639); levels 5–6 are **vertical**
 privilege escalation (CWE-284). Each repo ships a `SOLUTION.md` walkthrough and
 a `FLAG{...}` to capture from a resource that belongs to someone else.
+
+<br>
+
+<div align="center">
+
+| #   | Lab                                             | Stack   | Difficulty | The flaw                                              |
+| --- | ----------------------------------------------- | ------- | ---------- | ----------------------------------------------------- |
+| 1   | [ledgerly](https://github.com/iv0ks/ledgerly)   | Express | ⭐         | Read IDOR — no ownership check on `GET /invoices/:id` |
+| 2   | [pingboard](https://github.com/iv0ks/pingboard) | NestJS  | ⭐⭐       | Write IDOR / mass assignment on user update           |
+| 3   | [tasknest](https://github.com/iv0ks/tasknest)   | NestJS  | ⭐⭐⭐     | Missing tenant isolation (cross-org access)           |
+| 4   | [cartora](https://github.com/iv0ks/cartora)     | Next.js | ⭐⭐⭐     | Server trusts a client-supplied identity              |
+| 5   | [opsdeck](https://github.com/iv0ks/opsdeck)     | Next.js | ⭐⭐⭐⭐   | Vertical escalation — role check only in the UI       |
+| 6   | [vaultpass](https://github.com/iv0ks/vaultpass) | NestJS  | ⭐⭐⭐⭐   | Broken auth trust — a manipulable JWT claim           |
+
+</div>
+
+<br>
+
+> [!TIP]
+> Start with the [Broken Access Control field guide](docs/broken-access-control.md) — what
+> the bug is, authentication vs authorization, and how to test for it
+> methodically with two accounts using Burp Suite and OWASP ZAP. Each lab's
+> `GUIDE.md` builds on it.
 
 <br>
 
@@ -105,9 +113,3 @@ These applications are **intentionally vulnerable** and built for education.
 Run them only locally and isolated — **never** expose them to the internet, and
 never use these techniques against systems without explicit, written
 authorization.
-
-<br>
-
-## 📄 License
-
-[MIT](LICENSE)
