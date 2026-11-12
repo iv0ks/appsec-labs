@@ -19,6 +19,11 @@ to understand both the exploit **and** the fix.
 Six apps, one vulnerability class, increasing difficulty. Each hides a path
 traversal behind a progressively more convincing (but still broken) defence.
 
+> 📖 **New to the topic?** Start with the
+> **[Path Traversal field guide](docs/path-traversal.md)** — what the bug is,
+> why it happens, and how to test for it manually with Burp Suite and OWASP ZAP.
+> Each lab's `GUIDE.md` builds on it.
+
 | # | Lab | Stack | Difficulty | The broken defence |
 |---|-----|-------|------------|--------------------|
 | 1 | [fetchly](https://github.com/iv0ks/fetchly)     | Flask | ⭐ | no filter at all — direct traversal |
