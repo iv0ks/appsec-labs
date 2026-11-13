@@ -134,26 +134,190 @@ row the low-privilege user should never be able to read.
 
 <br>
 
-## 🗺️ Roadmap
+> The series below are **planned** — the design, stacks and lab names are fixed
+> (see [`APPSEC_LABS_ROADMAP.md`](APPSEC_LABS_ROADMAP.md)); the repos ship
+> progressively. Links will go live as each lab is published.
 
-Seven more series are **planned**, each a separate vulnerability class under the
-same `appsec-lab` topic (full detail and reserved lab names in
-[`APPSEC_LABS_ROADMAP.md`](APPSEC_LABS_ROADMAP.md)):
+<br>
 
-| #   | Series                         | Root CWE          | Stacks                       | Labs |
-| --- | ------------------------------ | ----------------- | ---------------------------- | ---- |
-| 4   | **Cross-Site Scripting (XSS)** | CWE-79            | Express + Next.js            | 8    |
-| 5   | **Command Injection**          | CWE-78 / CWE-77   | Node (+ PHP)                 | 6    |
-| 6   | **File Inclusion (LFI/RFI)**   | CWE-98            | Laravel + plain PHP          | 5    |
-| 7   | **SSRF**                       | CWE-918           | NestJS / Next.js + listener  | 6    |
-| 8   | **CSRF**                       | CWE-352           | Laravel (+ Express)          | 5    |
-| 9   | **Broken Authentication**      | CWE-287           | Laravel + Node               | 6    |
-| 10  | **Session Management**         | CWE-384 / CWE-613 | Node + Laravel               | 5    |
+### 🧭 Series 4 — Cross-Site Scripting (XSS) · _planned_
 
-Series 9 (*establishing* identity) and 10 (*maintaining* the session) are kept
-separate on purpose. Stacks are chosen per vulnerability — PHP/Laravel where the
-flaw is idiomatic to that ecosystem (file inclusion wrappers, framework CSRF
-tokens), Node elsewhere.
+Eight apps covering **all four canonical XSS types** — reflected
+(non-persistent), stored (persistent), DOM-based and blind — across the sink
+contexts where each lives (HTML body, attribute, JavaScript, client DOM, and a
+framework that auto-escapes until you bypass it). Built on **Express** for the
+classic server-rendered cases and **Next.js/React** for the DOM and
+`dangerouslySetInnerHTML` labs; the blind lab ships a mini-listener to catch the
+out-of-band callback. The capstone chains a stored payload into admin session
+theft.
+
+<br>
+
+<div align="center">
+
+| #   | Lab        | Stack   | Difficulty | The flaw                                                   |
+| --- | ---------- | :-----: | ---------- | ---------------------------------------------------------- |
+| 1   | searchlit  | Express | ⭐         | Reflected — the search term reflects raw into the HTML body |
+| 2   | profilard  | Express | ⭐⭐       | Reflected — value in an HTML attribute; break out of the quote |
+| 3   | commentor  | Express | ⭐⭐       | Stored — a comment served unsanitised to every visitor     |
+| 4   | boardly    | Next.js | ⭐⭐⭐     | DOM-based — client writes `location.hash` into `innerHTML` |
+| 5   | scriptor   | Express | ⭐⭐⭐     | Reflected into a JavaScript string — break the script context |
+| 6   | markhive   | Next.js | ⭐⭐⭐⭐   | Bypass — naive sanitiser + `dangerouslySetInnerHTML`       |
+| 7   | inkwell    | NestJS  | ⭐⭐⭐⭐   | Blind — injected blindly, detonates in an unseen admin panel |
+| 8   | relaybox   | Next.js | ⭐⭐⭐⭐   | Capstone — stored XSS → admin session theft                |
+
+</div>
+
+<br>
+
+### 🧭 Series 5 — Command Injection · _planned_
+
+Six apps where user input reaches an OS command. Two axes: the **technique**
+(in-band, blind time-based, out-of-band) and the **context** (direct
+concatenation, a quoted argument, a metacharacter blocklist you bypass). Mostly
+**Node** (`child_process` is the realistic antipattern in JS) with one **plain
+PHP** lab for the classic `shell_exec` flavour.
+
+<br>
+
+<div align="center">
+
+| #   | Lab        | Stack     | Difficulty | The flaw                                             |
+| --- | ---------- | :-------: | ---------- | ---------------------------------------------------- |
+| 1   | pingpanel  | Express   | ⭐         | Direct concatenation into a shell command (`; id`)   |
+| 2   | convertr   | Express   | ⭐⭐       | Quoted argument — break out of the quote             |
+| 3   | backuply   | NestJS    | ⭐⭐⭐     | Blind, time-based (`sleep`) — no command output      |
+| 4   | netprobe   | NestJS    | ⭐⭐⭐     | Blind, out-of-band to a bundled listener             |
+| 5   | zipcraft   | PHP       | ⭐⭐⭐⭐   | `shell_exec` behind a metacharacter blocklist bypass |
+| 6   | shellbox   | NestJS    | ⭐⭐⭐⭐   | Capstone — chained bypass to full RCE                |
+
+</div>
+
+<br>
+
+### 🧭 Series 6 — File Inclusion (LFI/RFI) · _planned_
+
+Five apps on local and remote file inclusion — the close cousin of path
+traversal, but where the included file is **executed**, not just read. Built in
+**PHP**, where the wrappers (`php://filter`, `data://`, `php://input`) and log
+poisoning are idiomatic, with one **Laravel** lab for a dynamic-view include.
+
+<br>
+
+<div align="center">
+
+| #   | Lab          | Stack   | Difficulty | The flaw                                            |
+| --- | ------------ | :-----: | ---------- | --------------------------------------------------- |
+| 1   | docwell      | PHP     | ⭐         | Basic local file inclusion                          |
+| 2   | loglect      | PHP     | ⭐⭐       | LFI + `php://filter` to read source                 |
+| 3   | includr      | PHP     | ⭐⭐⭐     | LFI → RCE via `data://` / `php://input`             |
+| 4   | templor      | Laravel | ⭐⭐⭐     | Dynamic view/include resolves attacker input        |
+| 5   | remotefetch  | PHP     | ⭐⭐⭐⭐   | Log poisoning → RCE / remote file inclusion          |
+
+</div>
+
+<br>
+
+### 🧭 Series 7 — Server-Side Request Forgery (SSRF) · _planned_
+
+Six apps where the server fetches a URL you control. Two axes: the **impact**
+(reach an internal-only service, hit a cloud metadata endpoint, scan ports) and
+the **defence bypass** (string allow-list, redirect, IP-encoding, DNS). Built on
+**NestJS/Next.js**, with extra internal containers in compose (an internal
+service, a metadata mock) and a mini-listener for the blind capstone.
+
+<br>
+
+<div align="center">
+
+| #   | Lab         | Stack   | Difficulty | The flaw                                            |
+| --- | ----------- | :-----: | ---------- | --------------------------------------------------- |
+| 1   | linkpeek    | NestJS  | ⭐         | Fetches an arbitrary user-supplied URL              |
+| 2   | thumblr     | NestJS  | ⭐⭐       | Reach an internal-only service not exposed publicly |
+| 3   | metastore   | NestJS  | ⭐⭐⭐     | Cloud metadata endpoint (169.254.169.254 mock)      |
+| 4   | webhookr    | Next.js | ⭐⭐⭐     | Allow-list bypass via an open redirect              |
+| 5   | fetchgate   | NestJS  | ⭐⭐⭐⭐   | Bypass via IP-encoding / DNS tricks                 |
+| 6   | tunnelgate  | NestJS  | ⭐⭐⭐⭐   | Capstone — blind SSRF to a bundled listener         |
+
+</div>
+
+<br>
+
+### 🧭 Series 8 — Cross-Site Request Forgery (CSRF) · _planned_
+
+Five apps on forging state-changing requests from another origin. Built mainly
+on **Laravel** — which ships CSRF protection by default — to teach exactly how
+it breaks when you except a route, weaken `SameSite`, or trust the `Referer`;
+plus an **Express** lab for the no-framework, no-token baseline. Each ships a
+`poc.html` attacker page.
+
+<br>
+
+<div align="center">
+
+| #   | Lab        | Stack   | Difficulty | The flaw                                            |
+| --- | ---------- | :-----: | ---------- | --------------------------------------------------- |
+| 1   | tokenless  | Express | ⭐         | State-changing request with no CSRF token at all    |
+| 2   | prefsync   | Laravel | ⭐⭐       | Token present but the route is wrongly excepted      |
+| 3   | fundflow   | Laravel | ⭐⭐⭐     | Predictable / global token                          |
+| 4   | samesiter  | Laravel | ⭐⭐⭐     | Weak `SameSite` cookie configuration                |
+| 5   | originbend | Express | ⭐⭐⭐⭐   | Capstone — bypass a `Referer`/`Origin`-based check  |
+
+</div>
+
+<br>
+
+### 🧭 Series 9 — Broken Authentication · _planned_
+
+Six apps on failures to **establish** identity — brute force, user enumeration,
+broken password reset, insecure "remember me", and unverified JWTs. Built on
+**Laravel** (a realistic login we then break) and **Node**. The capstone chains
+enumeration and a reset flaw into a full account takeover.
+
+<br>
+
+<div align="center">
+
+| #   | Lab        | Stack   | Difficulty | The flaw                                            |
+| --- | ---------- | :-----: | ---------- | --------------------------------------------------- |
+| 1   | gatewayr   | Laravel | ⭐         | No rate-limit — brute force / credential stuffing   |
+| 2   | enumerate  | Node    | ⭐⭐       | User enumeration via response/timing oracle         |
+| 3   | forgepass  | Laravel | ⭐⭐⭐     | Broken password reset (predictable / no-expiry token) |
+| 4   | remembr    | Node    | ⭐⭐⭐     | Insecure "remember me" token                        |
+| 5   | nonejwt    | NestJS  | ⭐⭐⭐⭐   | JWT `alg:none` / signature not verified             |
+| 6   | takeovr    | Laravel | ⭐⭐⭐⭐   | Capstone — enumeration → reset → account takeover   |
+
+</div>
+
+<br>
+
+### 🧭 Series 10 — Session Management · _planned_
+
+Five apps on failures to **maintain** an established session — fixation, missing
+cookie flags, broken invalidation on logout/expiry, and predictable identifiers.
+Built on **Node** and **Laravel**. The capstone chains them into a full session
+takeover.
+
+<br>
+
+<div align="center">
+
+| #   | Lab         | Stack   | Difficulty | The flaw                                            |
+| --- | ----------- | :-----: | ---------- | --------------------------------------------------- |
+| 1   | fixate      | Express | ⭐         | Session fixation — id not rotated on login          |
+| 2   | cookiejar   | Express | ⭐⭐       | Missing cookie flags (`HttpOnly`/`Secure`/`SameSite`) |
+| 3   | staleport   | Laravel | ⭐⭐⭐     | Logout / expiry does not invalidate the session     |
+| 4   | predictid   | NestJS  | ⭐⭐⭐     | Predictable session identifier                      |
+| 5   | ghostlogin  | NestJS  | ⭐⭐⭐⭐   | Capstone — full session-takeover chain              |
+
+</div>
+
+<br>
+
+> [!NOTE]
+> Series 9 (*establishing* identity) and 10 (*maintaining* the session) are kept
+> separate on purpose. Stacks are chosen per vulnerability — PHP/Laravel where
+> the flaw is idiomatic to that ecosystem, Node elsewhere.
 
 <br>
 
