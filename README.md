@@ -8,13 +8,15 @@
 A growing series of **intentionally vulnerable web apps** for hands-on web security practice. Each lab is a realistic, named "product" — not an obvious
 exercise — shipped as its own public repo: **dockerized** and published to **GHCR**.
 
-The goal is to practice finding and exploiting a specific vulnerability class in an environment that looks and behaves like real software, then read the writeup
-to understand both the exploit **and** the fix.
+<br>
+
+> [!WARNING]
+> Run them **only locally and isolated** — never expose them to the internet, and **never use these techniques against systems without explicit**, written **authorization**.
 
 <br>
 
-> [!NOTE]
-> Find them all on GitHub under the **[`appsec-lab`](https://github.com/topics/appsec-lab)** topic.
+The goal is to practice finding and exploiting a specific vulnerability class in an environment that looks and behaves like real software, then read the writeup
+to understand both the exploit **and** the fix.
 
 <br>
 
@@ -106,10 +108,3 @@ docker compose up -d --build <lab>
 See each repo's README for the exact port and the challenge brief.
 
 <br>
-
-## ⚠️ Disclaimer
-
-These applications are **intentionally vulnerable** and built for education.
-Run them only locally and isolated — **never** expose them to the internet, and
-never use these techniques against systems without explicit, written
-authorization.
