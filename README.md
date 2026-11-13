@@ -142,7 +142,7 @@ same `appsec-lab` topic (full detail and reserved lab names in
 
 | #   | Series                         | Root CWE          | Stacks                       | Labs |
 | --- | ------------------------------ | ----------------- | ---------------------------- | ---- |
-| 4   | **Cross-Site Scripting (XSS)** | CWE-79            | Express + Next.js            | 7    |
+| 4   | **Cross-Site Scripting (XSS)** | CWE-79            | Express + Next.js            | 8    |
 | 5   | **Command Injection**          | CWE-78 / CWE-77   | Node (+ PHP)                 | 6    |
 | 6   | **File Inclusion (LFI/RFI)**   | CWE-98            | Laravel + plain PHP          | 5    |
 | 7   | **SSRF**                       | CWE-918           | NestJS / Next.js + listener  | 6    |
