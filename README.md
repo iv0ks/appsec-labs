@@ -304,10 +304,11 @@ capstone chains enumeration and a reset flaw into a full account takeover.
 
 ### 🧭 Series 10 — Session Management · _planned_
 
-Five apps on failures to **maintain** an established session — fixation, missing
-cookie flags, broken invalidation on logout/expiry, and predictable identifiers.
-Built on **Node** and **Laravel**. The capstone chains them into a full session
-takeover.
+Five apps on failures to **maintain** an established session — missing cookie
+flags, fixation, predictable identifiers, and broken invalidation on
+logout/expiry. Built on **Express/NestJS** (which expose cookie config and id
+rotation explicitly) and **Laravel**. The capstone chains them into a full
+session hijack.
 
 <br>
 
@@ -315,11 +316,11 @@ takeover.
 
 | #   | Lab         | Stack   | Difficulty | The flaw                                            |
 | --- | ----------- | :-----: | ---------- | --------------------------------------------------- |
-| 1   | fixate      | Express | ⭐         | Session fixation — id not rotated on login          |
-| 2   | cookiejar   | Express | ⭐⭐       | Missing cookie flags (`HttpOnly`/`Secure`/`SameSite`) |
-| 3   | staleport   | Laravel | ⭐⭐⭐     | Logout / expiry does not invalidate the session     |
-| 4   | predictid   | NestJS  | ⭐⭐⭐     | Predictable session identifier                      |
-| 5   | ghostlogin  | NestJS  | ⭐⭐⭐⭐   | Capstone — full session-takeover chain              |
+| 1   | cookiejar   | Express | ⭐         | Missing cookie flags (`HttpOnly`/`Secure`/`SameSite`) |
+| 2   | fixate      | Express | ⭐⭐       | Session fixation — id not rotated on login          |
+| 3   | predictid   | NestJS  | ⭐⭐⭐     | Predictable session identifier                      |
+| 4   | staleport   | Laravel | ⭐⭐⭐     | Logout / expiry does not invalidate the session     |
+| 5   | ghostlogin  | NestJS  | ⭐⭐⭐⭐   | Capstone — full session-hijack chain                |
 
 </div>
 
