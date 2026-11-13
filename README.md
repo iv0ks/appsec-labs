@@ -222,11 +222,12 @@ poisoning are idiomatic, with one **Laravel** lab for a dynamic-view include.
 
 ### 🧭 Series 7 — Server-Side Request Forgery (SSRF) · _planned_
 
-Six apps where the server fetches a URL you control. Two axes: the **impact**
-(reach an internal-only service, hit a cloud metadata endpoint, scan ports) and
-the **defence bypass** (string allow-list, redirect, IP-encoding, DNS). Built on
-**NestJS/Next.js**, with extra internal containers in compose (an internal
-service, a metadata mock) and a mini-listener for the blind capstone.
+Seven apps where the server fetches a URL you control. Two axes: the **impact**
+(reach an internal endpoint, scan the internal network, steal cloud metadata and
+its IAM token) and the **defence bypass** (redirect, IP-encoding, DNS). Covers
+both **regular** and **blind** SSRF. Built on **NestJS** — the flaw is entirely
+server-side — with extra internal containers in compose (an internal service
+holding real data, a metadata mock) and a mini-listener for the blind capstone.
 
 <br>
 
@@ -236,10 +237,11 @@ service, a metadata mock) and a mini-listener for the blind capstone.
 | --- | ----------- | :-----: | ---------- | --------------------------------------------------- |
 | 1   | linkpeek    | NestJS  | ⭐         | Fetches an arbitrary user-supplied URL              |
 | 2   | thumblr     | NestJS  | ⭐⭐       | Reach an internal-only service not exposed publicly |
-| 3   | metastore   | NestJS  | ⭐⭐⭐     | Cloud metadata endpoint (169.254.169.254 mock)      |
-| 4   | webhookr    | Next.js | ⭐⭐⭐     | Allow-list bypass via an open redirect              |
-| 5   | fetchgate   | NestJS  | ⭐⭐⭐⭐   | Bypass via IP-encoding / DNS tricks                 |
-| 6   | tunnelgate  | NestJS  | ⭐⭐⭐⭐   | Capstone — blind SSRF to a bundled listener         |
+| 3   | portpeek    | NestJS  | ⭐⭐       | Internal network reconnaissance / port scan         |
+| 4   | metastore   | NestJS  | ⭐⭐⭐     | Cloud metadata theft + IAM token (169.254.169.254)  |
+| 5   | webhookr    | NestJS  | ⭐⭐⭐     | Allow-list bypass via an open redirect              |
+| 6   | fetchgate   | NestJS  | ⭐⭐⭐⭐   | Bypass via IP-encoding / DNS tricks                 |
+| 7   | tunnelgate  | NestJS  | ⭐⭐⭐⭐   | Capstone — blind SSRF to a bundled listener         |
 
 </div>
 
