@@ -174,22 +174,24 @@ theft.
 
 Six apps where user input reaches an OS command. Two axes: the **technique**
 (in-band, blind time-based, out-of-band) and the **context** (direct
-concatenation, a quoted argument, a metacharacter blocklist you bypass). Mostly
-**Node** (`child_process` is the realistic antipattern in JS) with one **plain
-PHP** lab for the classic `shell_exec` flavour.
+concatenation, a quoted argument, a metacharacter blocklist you bypass). Built
+on **Flask (Python)** and **PHP** — the stacks where this flaw is most
+idiomatic and most faithful to how it appears in the wild (`subprocess`,
+`os.system`, `shell_exec`); the blind lab ships a mini-listener for the
+out-of-band callback.
 
 <br>
 
 <div align="center">
 
-| #   | Lab        | Stack     | Difficulty | The flaw                                             |
-| --- | ---------- | :-------: | ---------- | ---------------------------------------------------- |
-| 1   | pingpanel  | Express   | ⭐         | Direct concatenation into a shell command (`; id`)   |
-| 2   | convertr   | Express   | ⭐⭐       | Quoted argument — break out of the quote             |
-| 3   | backuply   | NestJS    | ⭐⭐⭐     | Blind, time-based (`sleep`) — no command output      |
-| 4   | netprobe   | NestJS    | ⭐⭐⭐     | Blind, out-of-band to a bundled listener             |
-| 5   | zipcraft   | PHP       | ⭐⭐⭐⭐   | `shell_exec` behind a metacharacter blocklist bypass |
-| 6   | shellbox   | NestJS    | ⭐⭐⭐⭐   | Capstone — chained bypass to full RCE                |
+| #   | Lab        | Stack   | Difficulty | The flaw                                             |
+| --- | ---------- | :-----: | ---------- | ---------------------------------------------------- |
+| 1   | pingpanel  | Flask   | ⭐         | Direct concatenation into a shell command (`; id`)   |
+| 2   | convertr   | PHP     | ⭐⭐       | Quoted argument — break out of the quote             |
+| 3   | backuply   | Flask   | ⭐⭐⭐     | Blind, time-based (`sleep`) — no command output      |
+| 4   | netprobe   | Flask   | ⭐⭐⭐     | Blind, out-of-band to a bundled listener             |
+| 5   | zipcraft   | PHP     | ⭐⭐⭐⭐   | `shell_exec` behind a metacharacter blocklist bypass |
+| 6   | shellbox   | PHP     | ⭐⭐⭐⭐   | Capstone — chained bypass to full RCE                |
 
 </div>
 
