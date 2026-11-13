@@ -93,11 +93,51 @@ and a `FLAG{...}` to capture from a resource that belongs to someone else.
 
 <br>
 
+### 🧪 Series 3 — SQL Injection (CWE-89)
+
+Eight apps, one vulnerability class, increasing difficulty. SQL injection has
+**two independent dimensions**, and the series covers both: the *technique* you
+use to extract data or act (in-band, UNION, blind boolean, time-based, second
+order, out-of-band) **and** the *context* where the input lands in the query
+(string, numeric, `ORDER BY`/identifier, login, stored). Built in the **Node**
+ecosystem on **PostgreSQL**; schema and seed use Drizzle, while the vulnerable
+endpoints deliberately drop to raw concatenated SQL — because an ORM does not
+save you once you hand-build query strings.
+
+Each repo ships a `SOLUTION.md` walkthrough and a `FLAG{...}` to extract from a
+row the low-privilege user should never be able to read.
+
+<br>
+
+<div align="center">
+
+| #   | Lab                                               |                                                        Stack                                                        | Difficulty | The flaw                                                   |
+| --- | ------------------------------------------------- | :-----------------------------------------------------------------------------------------------------------------: | ---------- | ---------------------------------------------------------- |
+| 1   | [shelfwise](https://github.com/iv0ks/shelfwise)   |       ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)               | ⭐         | In-band / error-based — break the quote in a `WHERE` string |
+| 2   | [tuneloop](https://github.com/iv0ks/tuneloop)     |       ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)               | ⭐⭐       | UNION-based — reconstruct data with `UNION SELECT`         |
+| 3   | [gatecheck](https://github.com/iv0ks/gatecheck)   |       ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)                  | ⭐⭐       | Authentication bypass — the classic `' OR 1=1 --` login    |
+| 4   | [ordernest](https://github.com/iv0ks/ordernest)   |       ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)                  | ⭐⭐⭐     | Injection in `ORDER BY` — where prepared statements don't help |
+| 5   | [pulsepoll](https://github.com/iv0ks/pulsepoll)   |       ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)             | ⭐⭐⭐     | Boolean-blind — infer data bit-by-bit from true/false      |
+| 6   | [chronark](https://github.com/iv0ks/chronark)     |       ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)                  | ⭐⭐⭐⭐   | Time-based blind — infer via `pg_sleep` delays             |
+| 7   | [echobin](https://github.com/iv0ks/echobin)       |       ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)                  | ⭐⭐⭐⭐   | Second-order — stored payload detonates in a later query   |
+| 8   | [tunnelcast](https://github.com/iv0ks/tunnelcast) |       ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)                  | ⭐⭐⭐⭐   | Capstone — out-of-band exfiltration to a bundled listener  |
+
+</div>
+
+<br>
+
+> [!TIP]
+> Start with the [SQL Injection field guide](docs/sql-injection.md) — what the
+> bug is, why parameterization is the fix, the technique ladder, the injection
+> contexts (including where prepared statements can't help), and per-engine
+> syntax notes. Each lab's `GUIDE.md` builds on it.
+
+<br>
+
 ## 🗺️ Roadmap
 
 New series land as separate labs under the same `appsec-lab` topic:
 
-- **SQL Injection**
 - **Cross-Site Scripting (XSS)**
 - **Authentication & Session flaws**
 
