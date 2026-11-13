@@ -136,10 +136,24 @@ row the low-privilege user should never be able to read.
 
 ## 🗺️ Roadmap
 
-New series land as separate labs under the same `appsec-lab` topic:
+Seven more series are **planned**, each a separate vulnerability class under the
+same `appsec-lab` topic (full detail and reserved lab names in
+[`APPSEC_LABS_ROADMAP.md`](APPSEC_LABS_ROADMAP.md)):
 
-- **Cross-Site Scripting (XSS)**
-- **Authentication & Session flaws**
+| #   | Series                         | Root CWE          | Stacks                       | Labs |
+| --- | ------------------------------ | ----------------- | ---------------------------- | ---- |
+| 4   | **Cross-Site Scripting (XSS)** | CWE-79            | Express + Next.js            | 7    |
+| 5   | **Command Injection**          | CWE-78 / CWE-77   | Node (+ PHP)                 | 6    |
+| 6   | **File Inclusion (LFI/RFI)**   | CWE-98            | Laravel + plain PHP          | 5    |
+| 7   | **SSRF**                       | CWE-918           | NestJS / Next.js + listener  | 6    |
+| 8   | **CSRF**                       | CWE-352           | Laravel (+ Express)          | 5    |
+| 9   | **Broken Authentication**      | CWE-287           | Laravel + Node               | 6    |
+| 10  | **Session Management**         | CWE-384 / CWE-613 | Node + Laravel               | 5    |
+
+Series 9 (*establishing* identity) and 10 (*maintaining* the session) are kept
+separate on purpose. Stacks are chosen per vulnerability — PHP/Laravel where the
+flaw is idiomatic to that ecosystem (file inclusion wrappers, framework CSRF
+tokens), Node elsewhere.
 
 <br>
 
