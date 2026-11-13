@@ -51,26 +51,35 @@ Each repo ships with a `SOLUTION.md` walkthrough (spoilers) and a flag of the fo
 
 ### 🧪 Series 2 — Broken Access Control / IDOR (CWE-639 / CWE-284)
 
-Six apps, one vulnerability class, increasing difficulty — from reading another user's record to full role escalation. Horizontal IDOR first (levels 1–4), then
-vertical privilege escalation (levels 5–6). Built in the **Node** ecosystem (TypeScript), each with a seeded set of identities so "accessing what isn't
-yours" is a concrete, capturable goal.
+Ten apps, one vulnerability class, increasing difficulty — from reading another
+user's record to full role escalation. Broken access control has **two
+independent dimensions**, and the series covers both: *what* the broken access
+lets you do (read, write, cross-tenant, impersonate, escalate) **and** *how* the
+object is referenced (sequential, UUID, base64-encoded, hashids — the id format
+is the attack technique, never the control). Built in the **Node** ecosystem
+(TypeScript), each lab seeds a set of identities so "accessing what isn't yours"
+is a concrete, capturable goal.
 
-Levels 1–4 are **horizontal** IDOR (CWE-639); levels 5–6 are **vertical**
-privilege escalation (CWE-284). Each repo ships a `SOLUTION.md` walkthrough and
-a `FLAG{...}` to capture from a resource that belongs to someone else.
+The IDOR labs are **CWE-639**; the vertical privilege-escalation labs
+(opsdeck, vaultpass) are **CWE-284**. Each repo ships a `SOLUTION.md` walkthrough
+and a `FLAG{...}` to capture from a resource that belongs to someone else.
 
 <br>
 
 <div align="center">
 
-| #   | Lab                                             |                                                        Stack                                                        | Difficulty | The flaw                                              |
-| --- | ----------------------------------------------- | :-----------------------------------------------------------------------------------------------------------------: | ---------- | ----------------------------------------------------- |
-| 1   | [ledgerly](https://github.com/iv0ks/ledgerly)   |       ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)               | ⭐         | Read IDOR — no ownership check on `GET /invoices/:id` |
-| 2   | [pingboard](https://github.com/iv0ks/pingboard) |       ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)                  | ⭐⭐       | Write IDOR / mass assignment on user update           |
-| 3   | [tasknest](https://github.com/iv0ks/tasknest)   |       ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)                  | ⭐⭐⭐     | Missing tenant isolation (cross-org access)           |
-| 4   | [cartora](https://github.com/iv0ks/cartora)     |       ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)             | ⭐⭐⭐     | Server trusts a client-supplied identity              |
-| 5   | [opsdeck](https://github.com/iv0ks/opsdeck)     |       ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)             | ⭐⭐⭐⭐   | Vertical escalation — role check only in the UI       |
-| 6   | [vaultpass](https://github.com/iv0ks/vaultpass) |       ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)                  | ⭐⭐⭐⭐   | Broken auth trust — a manipulable JWT claim           |
+| #   | Lab                                             |                                                        Stack                                                        | Difficulty | The flaw                                                   |
+| --- | ----------------------------------------------- | :-----------------------------------------------------------------------------------------------------------------: | ---------- | ---------------------------------------------------------- |
+| 1   | [ledgerly](https://github.com/iv0ks/ledgerly)   |       ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)               | ⭐         | Read IDOR — no ownership check on `GET /invoices/:id` (sequential id) |
+| 2   | [pingboard](https://github.com/iv0ks/pingboard) |       ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)                  | ⭐⭐       | Write IDOR / mass assignment on user update (sequential id) |
+| 3   | [keyvault](https://github.com/iv0ks/keyvault)   |       ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)                  | ⭐⭐       | Read IDOR on **UUID**-keyed resources — unguessable ≠ authorized |
+| 4   | [snapvault](https://github.com/iv0ks/snapvault) |       ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)               | ⭐⭐⭐     | Write IDOR on **base64**-encoded handles — decode, alter, re-encode |
+| 5   | [couponly](https://github.com/iv0ks/couponly)   |       ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)                  | ⭐⭐⭐     | IDOR on **hashids**-obfuscated ids — forge valid references |
+| 6   | [tasknest](https://github.com/iv0ks/tasknest)   |       ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)                  | ⭐⭐⭐     | Missing tenant isolation (cross-org access)                |
+| 7   | [cartora](https://github.com/iv0ks/cartora)     |       ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)             | ⭐⭐⭐     | Server trusts a client-supplied identity (body/cookie)     |
+| 8   | [opsdeck](https://github.com/iv0ks/opsdeck)     |       ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)             | ⭐⭐⭐⭐   | Vertical escalation — role check only in the UI            |
+| 9   | [vaultpass](https://github.com/iv0ks/vaultpass) |       ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)                  | ⭐⭐⭐⭐   | Broken auth trust — a manipulable JWT claim                |
+| 10  | [mirrorbox](https://github.com/iv0ks/mirrorbox) |       ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)             | ⭐⭐⭐⭐   | Capstone — same resource under four id formats; the disguise was never the control |
 
 </div>
 
