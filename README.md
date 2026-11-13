@@ -277,10 +277,11 @@ POST `<form>`, cross-site `fetch`).
 
 ### 🧭 Series 9 — Broken Authentication · _planned_
 
-Six apps on failures to **establish** identity — brute force, user enumeration,
-broken password reset, insecure "remember me", and unverified JWTs. Built on
-**Laravel** (a realistic login we then break) and **Node**. The capstone chains
-enumeration and a reset flaw into a full account takeover.
+Eight apps on failures to **establish** identity — brute force, user
+enumeration, broken password reset, insecure "remember me", unverified JWTs, and
+**two kinds of MFA bypass** (an unenforced second step, and a brute-forceable
+OTP). Built on **Laravel** (a realistic login we then break) and **NestJS**. The
+capstone chains enumeration and a reset flaw into a full account takeover.
 
 <br>
 
@@ -289,11 +290,13 @@ enumeration and a reset flaw into a full account takeover.
 | #   | Lab        | Stack   | Difficulty | The flaw                                            |
 | --- | ---------- | :-----: | ---------- | --------------------------------------------------- |
 | 1   | gatewayr   | Laravel | ⭐         | No rate-limit — brute force / credential stuffing   |
-| 2   | enumerate  | Node    | ⭐⭐       | User enumeration via response/timing oracle         |
+| 2   | enumerate  | NestJS  | ⭐⭐       | User enumeration via response/timing oracle         |
 | 3   | forgepass  | Laravel | ⭐⭐⭐     | Broken password reset (predictable / no-expiry token) |
-| 4   | remembr    | Node    | ⭐⭐⭐     | Insecure "remember me" token                        |
+| 4   | remembr    | NestJS  | ⭐⭐⭐     | Insecure "remember me" token                        |
 | 5   | nonejwt    | NestJS  | ⭐⭐⭐⭐   | JWT `alg:none` / signature not verified             |
-| 6   | takeovr    | Laravel | ⭐⭐⭐⭐   | Capstone — enumeration → reset → account takeover   |
+| 6   | secondgate | Laravel | ⭐⭐⭐⭐   | MFA bypass — second factor not enforced server-side |
+| 7   | otpflood   | NestJS  | ⭐⭐⭐⭐   | MFA bypass — OTP brute force (no rate-limit)         |
+| 8   | takeovr    | Laravel | ⭐⭐⭐⭐   | Capstone — enumeration → reset → account takeover   |
 
 </div>
 
