@@ -249,11 +249,14 @@ holding real data, a metadata mock) and a mini-listener for the blind capstone.
 
 ### 🧭 Series 8 — Cross-Site Request Forgery (CSRF) · _planned_
 
-Five apps on forging state-changing requests from another origin. Built mainly
-on **Laravel** — which ships CSRF protection by default — to teach exactly how
-it breaks when you except a route, weaken `SameSite`, or trust the `Referer`;
-plus an **Express** lab for the no-framework, no-token baseline. Each ships a
-`poc.html` attacker page.
+Six apps on forging state-changing requests from another origin, each targeting
+a concrete high-impact feature — change email, preferences, **update password**,
+**update/alter payment info**, edit profile. Built mainly on **Laravel** — which
+ships CSRF protection by default — to teach exactly how it breaks when you except
+a route, leave a token unvalidated or predictable, weaken `SameSite`, or trust
+the `Referer`; plus **Express** for the no-framework extremes. Each ships a
+`poc.html` attacker page on a separate origin, using varied vectors (GET `<img>`,
+POST `<form>`, cross-site `fetch`).
 
 <br>
 
@@ -261,11 +264,12 @@ plus an **Express** lab for the no-framework, no-token baseline. Each ships a
 
 | #   | Lab        | Stack   | Difficulty | The flaw                                            |
 | --- | ---------- | :-----: | ---------- | --------------------------------------------------- |
-| 1   | tokenless  | Express | ⭐         | State-changing request with no CSRF token at all    |
-| 2   | prefsync   | Laravel | ⭐⭐       | Token present but the route is wrongly excepted      |
-| 3   | fundflow   | Laravel | ⭐⭐⭐     | Predictable / global token                          |
-| 4   | samesiter  | Laravel | ⭐⭐⭐     | Weak `SameSite` cookie configuration                |
-| 5   | originbend | Express | ⭐⭐⭐⭐   | Capstone — bypass a `Referer`/`Origin`-based check  |
+| 1   | tokenless  | Express | ⭐         | Change email — no CSRF token at all (GET `<img>`)   |
+| 2   | prefsync   | Laravel | ⭐⭐       | Preferences — token present but the route is excepted |
+| 3   | passpivot  | Laravel | ⭐⭐⭐     | Update password — token not validated → takeover    |
+| 4   | fundflow   | Laravel | ⭐⭐⭐     | Update payment info — predictable / global token    |
+| 5   | samesiter  | Laravel | ⭐⭐⭐     | Edit profile — weak `SameSite` cookie configuration |
+| 6   | originbend | Express | ⭐⭐⭐⭐   | Capstone — alter payment info via `Referer`/`Origin` bypass |
 
 </div>
 
