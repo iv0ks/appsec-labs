@@ -360,6 +360,30 @@ where upload→RCE is most direct — and **Node** for the modern variants.
 
 <br>
 
+### 🧭 Series 12 — Server-Side Template Injection (SSTI) · _planned_
+
+Five apps where user input is concatenated into a server-side template and the
+engine evaluates it — from `{{7*7}}` detection to full RCE. SSTI is
+engine-specific, so the series spans **four engines** (Jinja2, Twig, Blade,
+nunjucks): you learn to fingerprint the engine, then use the right RCE chain.
+Built on **Flask**, **PHP/Twig**, **Laravel/Blade** and **Node/nunjucks**.
+
+<br>
+
+<div align="center">
+
+| #   | Lab        | Stack        | Difficulty | The flaw                                            |
+| --- | ---------- | :----------: | ---------- | --------------------------------------------------- |
+| 1   | templeak   | Flask/Jinja2 | ⭐         | Reflected SSTI — `{{7*7}}` confirms, then data leak |
+| 2   | renderly   | Flask/Jinja2 | ⭐⭐⭐     | SSTI → RCE via Python object traversal (+ sandbox)  |
+| 3   | twigbox    | PHP/Twig     | ⭐⭐⭐     | Same bug, different engine — Twig RCE chain         |
+| 4   | bladefold  | Laravel/Blade| ⭐⭐⭐     | Unsafe `Blade::render(input)` / `@php` → RCE        |
+| 5   | mailmerge  | Node/nunjucks| ⭐⭐⭐⭐   | Capstone — stored SSTI in a templated email → RCE   |
+
+</div>
+
+<br>
+
 ## 🚀 Running a lab
 
 Every lab is a self-contained Docker Compose stack. In short:
