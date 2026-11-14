@@ -333,6 +333,33 @@ session hijack.
 
 <br>
 
+### 🧭 Series 11 — File Upload · _planned_
+
+Seven apps where the server accepts user files and fails to validate type,
+content, name or location — letting you upload a webshell and get code
+execution. A ladder from no validation through extension/MIME bypasses, an
+`.htaccess` Apache override, a path-in-filename write, zip-slip, and an upload
+**zip bomb** (DoS), to a chained capstone. Built on **PHP (Apache + mod_php)** —
+where upload→RCE is most direct — and **Node** for the modern variants.
+
+<br>
+
+<div align="center">
+
+| #   | Lab         | Stack   | Difficulty | The flaw                                            |
+| --- | ----------- | :-----: | ---------- | --------------------------------------------------- |
+| 1   | dropzone    | PHP     | ⭐         | No validation — upload a `.php` webshell            |
+| 2   | imagary     | PHP     | ⭐⭐       | Extension/MIME bypass (double ext, magic bytes)     |
+| 3   | htaccessd   | PHP     | ⭐⭐⭐     | `.htaccess` override makes another extension run as PHP |
+| 4   | avatarly    | Express | ⭐⭐⭐     | Content-Type trust + `../` path in the filename     |
+| 5   | archivault  | NestJS  | ⭐⭐⭐     | Zip-slip — archive entries write outside the dir    |
+| 6   | floodgate   | NestJS  | ⭐⭐⭐     | Upload DoS — a zip bomb with no size/ratio limit    |
+| 7   | uploadr     | PHP     | ⭐⭐⭐⭐   | Capstone — chained bypass to an RCE webshell        |
+
+</div>
+
+<br>
+
 ## 🚀 Running a lab
 
 Every lab is a self-contained Docker Compose stack. In short:
