@@ -37,6 +37,60 @@ to understand both the exploit **and** the fix.
 
 <br>
 
+### 🚀 Running a lab
+
+Every lab is a self-contained Docker Compose stack. You need **Docker** and the
+**Docker Compose** plugin installed — nothing else. Replace `<lab>` with the lab
+name from the tables above (for example `fetchly`).
+
+**1. Create the shared network** (once per machine — all labs attach to it):
+
+```bash
+docker network create iv0ks-dev
+```
+
+<br>
+
+> [!NOTE]
+> If it already exists Docker prints `network with name iv0ks-dev already exists` — that's harmless, carry on.
+
+<br>
+
+**2. Clone the lab you want:**
+
+```bash
+git clone https://github.com/iv0ks/<lab>.git
+```
+
+**3. Build and start it in the background:**
+
+```bash
+cd <lab>
+docker compose up -d <lab>
+```
+
+The app is now listening on a local port — check the lab's own `README` for the
+exact port and the challenge brief, then open it in your browser.
+
+**4. When you're done, tear it down:**
+
+```bash
+docker compose down
+```
+
+<br>
+
+> [!TIP]
+> To wipe seeded data and start the challenge from scratch, add the `-v` flag
+> (`docker compose down -v`) to remove the volumes as well.
+
+<br>
+
+See each repo's `README` for the exact port and the challenge brief, and its
+`SOLUTION.md` once you've captured the flag.
+
+<br>
+
 ### 🧪 Series 1 — Path Traversal (CWE-22)
 
 Six apps, one vulnerability class, increasing difficulty. Each hides a path
@@ -537,20 +591,3 @@ A04 Insecure Design is demonstrated here (shopwave, clinicore).
 > Each box references the [pentest methodology guide](docs/pentest-methodology.md)
 > and a reusable [report template](REPORT_TEMPLATE.md) — because reporting a
 > finding well is half the job.
-
-<br>
-
-## 🚀 Running a lab
-
-Every lab is a self-contained Docker Compose stack. In short:
-
-```bash
-git clone https://github.com/iv0ks/<lab>.git
-cd <lab>
-docker network create iv0ks-dev   # once, shared across labs
-docker compose up -d --build <lab>
-```
-
-See each repo's README for the exact port and the challenge brief.
-
-<br>
