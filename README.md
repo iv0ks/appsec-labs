@@ -176,16 +176,16 @@ theft.
 
 <div align="center">
 
-| #   | Lab        | Stack   | Difficulty | The flaw                                                   |
-| --- | ---------- | :-----: | ---------- | ---------------------------------------------------------- |
-| 1   | searchlit  | Express | 🟢         | Reflected — the search term reflects raw into the HTML body |
-| 2   | profilard  | Express | 🟡🟡       | Reflected — value in an HTML attribute; break out of the quote |
-| 3   | commentor  | Express | 🟡🟡       | Stored — a comment served unsanitised to every visitor     |
-| 4   | boardly    | Next.js | 🟠🟠🟠     | DOM-based — client writes `location.hash` into `innerHTML` |
-| 5   | scriptor   | Express | 🟠🟠🟠     | Reflected into a JavaScript string — break the script context |
-| 6   | markhive   | Next.js | 🔴🔴🔴🔴   | Bypass — naive sanitiser + `dangerouslySetInnerHTML`       |
-| 7   | inkwell    | NestJS  | 🔴🔴🔴🔴   | Blind — injected blindly, detonates in an unseen admin panel |
-| 8   | relaybox   | Next.js | 🔴🔴🔴🔴   | Capstone — stored XSS → admin session theft                |
+| #   | Lab        |                                              Stack                                               | Difficulty | The flaw                                                   |
+| --- | ---------- | :---------------------------------------------------------------------------------------------: | ---------- | ---------------------------------------------------------- |
+| 1   | searchlit  | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white) | 🟢         | Reflected — the search term reflects raw into the HTML body |
+| 2   | profilard  | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white) | 🟡🟡       | Reflected — value in an HTML attribute; break out of the quote |
+| 3   | commentor  | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white) | 🟡🟡       | Stored — a comment served unsanitised to every visitor     |
+| 4   | boardly    | ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white) | 🟠🟠🟠     | DOM-based — client writes `location.hash` into `innerHTML` |
+| 5   | scriptor   | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white) | 🟠🟠🟠     | Reflected into a JavaScript string — break the script context |
+| 6   | markhive   | ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white) | 🔴🔴🔴🔴   | Bypass — naive sanitiser + `dangerouslySetInnerHTML`       |
+| 7   | inkwell    | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)    | 🔴🔴🔴🔴   | Blind — injected blindly, detonates in an unseen admin panel |
+| 8   | relaybox   | ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white) | 🔴🔴🔴🔴   | Capstone — stored XSS → admin session theft                |
 
 </div>
 
@@ -205,14 +205,14 @@ out-of-band callback.
 
 <div align="center">
 
-| #   | Lab        | Stack   | Difficulty | The flaw                                             |
-| --- | ---------- | :-----: | ---------- | ---------------------------------------------------- |
-| 1   | pingpanel  | Flask   | 🟢         | Direct concatenation into a shell command (`; id`)   |
-| 2   | convertr   | PHP     | 🟡🟡       | Quoted argument — break out of the quote             |
-| 3   | backuply   | Flask   | 🟠🟠🟠     | Blind, time-based (`sleep`) — no command output      |
-| 4   | netprobe   | Flask   | 🟠🟠🟠     | Blind, out-of-band to a bundled listener             |
-| 5   | zipcraft   | PHP     | 🔴🔴🔴🔴   | `shell_exec` behind a metacharacter blocklist bypass |
-| 6   | shellbox   | PHP     | 🔴🔴🔴🔴   | Capstone — chained bypass to full RCE                |
+| #   | Lab        |                                           Stack                                            | Difficulty | The flaw                                             |
+| --- | ---------- | :----------------------------------------------------------------------------------------: | ---------- | ---------------------------------------------------- |
+| 1   | pingpanel  | ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white) | 🟢         | Direct concatenation into a shell command (`; id`)   |
+| 2   | convertr   | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)        | 🟡🟡       | Quoted argument — break out of the quote             |
+| 3   | backuply   | ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white) | 🟠🟠🟠     | Blind, time-based (`sleep`) — no command output      |
+| 4   | netprobe   | ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white) | 🟠🟠🟠     | Blind, out-of-band to a bundled listener             |
+| 5   | zipcraft   | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)        | 🔴🔴🔴🔴   | `shell_exec` behind a metacharacter blocklist bypass |
+| 6   | shellbox   | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)        | 🔴🔴🔴🔴   | Capstone — chained bypass to full RCE                |
 
 </div>
 
@@ -229,13 +229,13 @@ poisoning are idiomatic, with one **Laravel** lab for a dynamic-view include.
 
 <div align="center">
 
-| #   | Lab          | Stack   | Difficulty | The flaw                                            |
-| --- | ------------ | :-----: | ---------- | --------------------------------------------------- |
-| 1   | docwell      | PHP     | 🟢         | Basic local file inclusion                          |
-| 2   | loglect      | PHP     | 🟡🟡       | LFI + `php://filter` to read source                 |
-| 3   | includr      | PHP     | 🟠🟠🟠     | LFI → RCE via `data://` / `php://input`             |
-| 4   | templor      | Laravel | 🟠🟠🟠     | Dynamic view/include resolves attacker input        |
-| 5   | remotefetch  | PHP     | 🔴🔴🔴🔴   | Log poisoning → RCE / remote file inclusion          |
+| #   | Lab          |                                              Stack                                               | Difficulty | The flaw                                            |
+| --- | ------------ | :---------------------------------------------------------------------------------------------: | ---------- | --------------------------------------------------- |
+| 1   | docwell      | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)             | 🟢         | Basic local file inclusion                          |
+| 2   | loglect      | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)             | 🟡🟡       | LFI + `php://filter` to read source                 |
+| 3   | includr      | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)             | 🟠🟠🟠     | LFI → RCE via `data://` / `php://input`             |
+| 4   | templor      | ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white) | 🟠🟠🟠     | Dynamic view/include resolves attacker input        |
+| 5   | remotefetch  | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)             | 🔴🔴🔴🔴   | Log poisoning → RCE / remote file inclusion          |
 
 </div>
 
@@ -254,15 +254,15 @@ holding real data, a metadata mock) and a mini-listener for the blind capstone.
 
 <div align="center">
 
-| #   | Lab         | Stack   | Difficulty | The flaw                                            |
-| --- | ----------- | :-----: | ---------- | --------------------------------------------------- |
-| 1   | linkpeek    | NestJS  | 🟢         | Fetches an arbitrary user-supplied URL              |
-| 2   | thumblr     | NestJS  | 🟡🟡       | Reach an internal-only service not exposed publicly |
-| 3   | portpeek    | NestJS  | 🟡🟡       | Internal network reconnaissance / port scan         |
-| 4   | metastore   | NestJS  | 🟠🟠🟠     | Cloud metadata theft + IAM token (169.254.169.254)  |
-| 5   | webhookr    | NestJS  | 🟠🟠🟠     | Allow-list bypass via an open redirect              |
-| 6   | fetchgate   | NestJS  | 🔴🔴🔴🔴   | Bypass via IP-encoding / DNS tricks                 |
-| 7   | tunnelgate  | NestJS  | 🔴🔴🔴🔴   | Capstone — blind SSRF to a bundled listener         |
+| #   | Lab         |                                            Stack                                             | Difficulty | The flaw                                            |
+| --- | ----------- | :------------------------------------------------------------------------------------------: | ---------- | --------------------------------------------------- |
+| 1   | linkpeek    | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white) | 🟢         | Fetches an arbitrary user-supplied URL              |
+| 2   | thumblr     | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white) | 🟡🟡       | Reach an internal-only service not exposed publicly |
+| 3   | portpeek    | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white) | 🟡🟡       | Internal network reconnaissance / port scan         |
+| 4   | metastore   | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white) | 🟠🟠🟠     | Cloud metadata theft + IAM token (169.254.169.254)  |
+| 5   | webhookr    | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white) | 🟠🟠🟠     | Allow-list bypass via an open redirect              |
+| 6   | fetchgate   | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white) | 🔴🔴🔴🔴   | Bypass via IP-encoding / DNS tricks                 |
+| 7   | tunnelgate  | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white) | 🔴🔴🔴🔴   | Capstone — blind SSRF to a bundled listener         |
 
 </div>
 
@@ -283,14 +283,14 @@ POST `<form>`, cross-site `fetch`).
 
 <div align="center">
 
-| #   | Lab        | Stack   | Difficulty | The flaw                                            |
-| --- | ---------- | :-----: | ---------- | --------------------------------------------------- |
-| 1   | tokenless  | Express | 🟢         | Change email — no CSRF token at all (GET `<img>`)   |
-| 2   | prefsync   | Laravel | 🟡🟡       | Preferences — token present but the route is excepted |
-| 3   | passpivot  | Laravel | 🟠🟠🟠     | Update password — token not validated → takeover    |
-| 4   | fundflow   | Laravel | 🟠🟠🟠     | Update payment info — predictable / global token    |
-| 5   | samesiter  | Laravel | 🟠🟠🟠     | Edit profile — weak `SameSite` cookie configuration |
-| 6   | originbend | Express | 🔴🔴🔴🔴   | Capstone — alter payment info via `Referer`/`Origin` bypass |
+| #   | Lab        |                                              Stack                                               | Difficulty | The flaw                                            |
+| --- | ---------- | :---------------------------------------------------------------------------------------------: | ---------- | --------------------------------------------------- |
+| 1   | tokenless  | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white) | 🟢         | Change email — no CSRF token at all (GET `<img>`)   |
+| 2   | prefsync   | ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white) | 🟡🟡       | Preferences — token present but the route is excepted |
+| 3   | passpivot  | ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white) | 🟠🟠🟠     | Update password — token not validated → takeover    |
+| 4   | fundflow   | ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white) | 🟠🟠🟠     | Update payment info — predictable / global token    |
+| 5   | samesiter  | ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white) | 🟠🟠🟠     | Edit profile — weak `SameSite` cookie configuration |
+| 6   | originbend | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white) | 🔴🔴🔴🔴   | Capstone — alter payment info via `Referer`/`Origin` bypass |
 
 </div>
 
@@ -308,16 +308,16 @@ capstone chains enumeration and a reset flaw into a full account takeover.
 
 <div align="center">
 
-| #   | Lab        | Stack   | Difficulty | The flaw                                            |
-| --- | ---------- | :-----: | ---------- | --------------------------------------------------- |
-| 1   | gatewayr   | Laravel | 🟢         | No rate-limit — brute force / credential stuffing   |
-| 2   | enumerate  | NestJS  | 🟡🟡       | User enumeration via response/timing oracle         |
-| 3   | forgepass  | Laravel | 🟠🟠🟠     | Broken password reset (predictable / no-expiry token) |
-| 4   | remembr    | NestJS  | 🟠🟠🟠     | Insecure "remember me" token                        |
-| 5   | nonejwt    | NestJS  | 🔴🔴🔴🔴   | JWT `alg:none` / signature not verified             |
-| 6   | secondgate | Laravel | 🔴🔴🔴🔴   | MFA bypass — second factor not enforced server-side |
-| 7   | otpflood   | NestJS  | 🔴🔴🔴🔴   | MFA bypass — OTP brute force (no rate-limit)         |
-| 8   | takeovr    | Laravel | 🔴🔴🔴🔴   | Capstone — enumeration → reset → account takeover   |
+| #   | Lab        |                                              Stack                                               | Difficulty | The flaw                                            |
+| --- | ---------- | :---------------------------------------------------------------------------------------------: | ---------- | --------------------------------------------------- |
+| 1   | gatewayr   | ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white) | 🟢         | No rate-limit — brute force / credential stuffing   |
+| 2   | enumerate  | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)    | 🟡🟡       | User enumeration via response/timing oracle         |
+| 3   | forgepass  | ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white) | 🟠🟠🟠     | Broken password reset (predictable / no-expiry token) |
+| 4   | remembr    | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)    | 🟠🟠🟠     | Insecure "remember me" token                        |
+| 5   | nonejwt    | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)    | 🔴🔴🔴🔴   | JWT `alg:none` / signature not verified             |
+| 6   | secondgate | ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white) | 🔴🔴🔴🔴   | MFA bypass — second factor not enforced server-side |
+| 7   | otpflood   | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)    | 🔴🔴🔴🔴   | MFA bypass — OTP brute force (no rate-limit)         |
+| 8   | takeovr    | ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white) | 🔴🔴🔴🔴   | Capstone — enumeration → reset → account takeover   |
 
 </div>
 
@@ -335,13 +335,13 @@ session hijack.
 
 <div align="center">
 
-| #   | Lab         | Stack   | Difficulty | The flaw                                            |
-| --- | ----------- | :-----: | ---------- | --------------------------------------------------- |
-| 1   | cookiejar   | Express | 🟢         | Missing cookie flags (`HttpOnly`/`Secure`/`SameSite`) |
-| 2   | fixate      | Express | 🟡🟡       | Session fixation — id not rotated on login          |
-| 3   | predictid   | NestJS  | 🟠🟠🟠     | Predictable session identifier                      |
-| 4   | staleport   | Laravel | 🟠🟠🟠     | Logout / expiry does not invalidate the session     |
-| 5   | ghostlogin  | NestJS  | 🔴🔴🔴🔴   | Capstone — full session-hijack chain                |
+| #   | Lab         |                                              Stack                                               | Difficulty | The flaw                                            |
+| --- | ----------- | :---------------------------------------------------------------------------------------------: | ---------- | --------------------------------------------------- |
+| 1   | cookiejar   | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white) | 🟢         | Missing cookie flags (`HttpOnly`/`Secure`/`SameSite`) |
+| 2   | fixate      | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white) | 🟡🟡       | Session fixation — id not rotated on login          |
+| 3   | predictid   | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)    | 🟠🟠🟠     | Predictable session identifier                      |
+| 4   | staleport   | ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white) | 🟠🟠🟠     | Logout / expiry does not invalidate the session     |
+| 5   | ghostlogin  | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)    | 🔴🔴🔴🔴   | Capstone — full session-hijack chain                |
 
 </div>
 
@@ -367,15 +367,15 @@ where upload→RCE is most direct — and **Node** for the modern variants.
 
 <div align="center">
 
-| #   | Lab         | Stack   | Difficulty | The flaw                                            |
-| --- | ----------- | :-----: | ---------- | --------------------------------------------------- |
-| 1   | dropzone    | PHP     | 🟢         | No validation — upload a `.php` webshell            |
-| 2   | imagary     | PHP     | 🟡🟡       | Extension/MIME bypass (double ext, magic bytes)     |
-| 3   | htaccessd   | PHP     | 🟠🟠🟠     | `.htaccess` override makes another extension run as PHP |
-| 4   | avatarly    | Express | 🟠🟠🟠     | Content-Type trust + `../` path in the filename     |
-| 5   | archivault  | NestJS  | 🟠🟠🟠     | Zip-slip — archive entries write outside the dir    |
-| 6   | floodgate   | NestJS  | 🟠🟠🟠     | Upload DoS — a zip bomb with no size/ratio limit    |
-| 7   | uploadr     | PHP     | 🔴🔴🔴🔴   | Capstone — chained bypass to an RCE webshell        |
+| #   | Lab         |                                              Stack                                               | Difficulty | The flaw                                            |
+| --- | ----------- | :---------------------------------------------------------------------------------------------: | ---------- | --------------------------------------------------- |
+| 1   | dropzone    | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)             | 🟢         | No validation — upload a `.php` webshell            |
+| 2   | imagary     | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)             | 🟡🟡       | Extension/MIME bypass (double ext, magic bytes)     |
+| 3   | htaccessd   | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)             | 🟠🟠🟠     | `.htaccess` override makes another extension run as PHP |
+| 4   | avatarly    | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white) | 🟠🟠🟠     | Content-Type trust + `../` path in the filename     |
+| 5   | archivault  | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)    | 🟠🟠🟠     | Zip-slip — archive entries write outside the dir    |
+| 6   | floodgate   | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)    | 🟠🟠🟠     | Upload DoS — a zip bomb with no size/ratio limit    |
+| 7   | uploadr     | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)             | 🔴🔴🔴🔴   | Capstone — chained bypass to an RCE webshell        |
 
 </div>
 
@@ -393,13 +393,13 @@ Built on **Flask**, **PHP/Twig**, **Laravel/Blade** and **Node/nunjucks**.
 
 <div align="center">
 
-| #   | Lab        | Stack        | Difficulty | The flaw                                            |
-| --- | ---------- | :----------: | ---------- | --------------------------------------------------- |
-| 1   | templeak   | Flask/Jinja2 | 🟢         | Reflected SSTI — `{{7*7}}` confirms, then data leak |
-| 2   | renderly   | Flask/Jinja2 | 🟠🟠🟠     | SSTI → RCE via Python object traversal (+ sandbox)  |
-| 3   | twigbox    | PHP/Twig     | 🟠🟠🟠     | Same bug, different engine — Twig RCE chain         |
-| 4   | bladefold  | Laravel/Blade| 🟠🟠🟠     | Unsafe `Blade::render(input)` / `@php` → RCE        |
-| 5   | mailmerge  | Node/nunjucks| 🔴🔴🔴🔴   | Capstone — stored SSTI in a templated email → RCE   |
+| #   | Lab        |                                                   Stack                                                    | Difficulty | The flaw                                            |
+| --- | ---------- | :-------------------------------------------------------------------------------------------------------: | ---------- | --------------------------------------------------- |
+| 1   | templeak   | ![Flask/Jinja2](https://img.shields.io/badge/Flask%2FJinja2-000000?style=flat&logo=flask&logoColor=white) | 🟢         | Reflected SSTI — `{{7*7}}` confirms, then data leak |
+| 2   | renderly   | ![Flask/Jinja2](https://img.shields.io/badge/Flask%2FJinja2-000000?style=flat&logo=flask&logoColor=white) | 🟠🟠🟠     | SSTI → RCE via Python object traversal (+ sandbox)  |
+| 3   | twigbox    | ![PHP/Twig](https://img.shields.io/badge/PHP%2FTwig-777BB4?style=flat&logo=php&logoColor=white)           | 🟠🟠🟠     | Same bug, different engine — Twig RCE chain         |
+| 4   | bladefold  | ![Laravel/Blade](https://img.shields.io/badge/Laravel%2FBlade-FF2D20?style=flat&logo=laravel&logoColor=white) | 🟠🟠🟠     | Unsafe `Blade::render(input)` / `@php` → RCE        |
+| 5   | mailmerge  | ![Node/nunjucks](https://img.shields.io/badge/Node%2Fnunjucks-5FA04E?style=flat&logo=nodedotjs&logoColor=white) | 🔴🔴🔴🔴   | Capstone — stored SSTI in a templated email → RCE   |
 
 </div>
 
@@ -417,13 +417,13 @@ when egress is blocked) and OOB. Includes the **SVG-upload** vector. Built on
 
 <div align="center">
 
-| #   | Lab        | Stack   | Difficulty | The flaw                                            |
-| --- | ---------- | :-----: | ---------- | --------------------------------------------------- |
-| 1   | feedparse  | NestJS  | 🟢         | In-band XXE — external entity reads a server file   |
-| 2   | billdrop   | NestJS  | 🟡🟡       | XXE → SSRF — the entity hits an internal URL         |
-| 3   | svgforge   | PHP     | 🟠🟠🟠     | XXE via an uploaded SVG (SVG is XML)                |
-| 4   | erroxxe    | NestJS  | 🟠🟠🟠     | Error-based XXE — exfiltrate via parser errors      |
-| 5   | xmlbridge  | NestJS  | 🔴🔴🔴🔴   | Capstone — blind / OOB XXE to a bundled listener    |
+| #   | Lab        |                                              Stack                                            | Difficulty | The flaw                                            |
+| --- | ---------- | :------------------------------------------------------------------------------------------: | ---------- | --------------------------------------------------- |
+| 1   | feedparse  | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white) | 🟢         | In-band XXE — external entity reads a server file   |
+| 2   | billdrop   | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white) | 🟡🟡       | XXE → SSRF — the entity hits an internal URL         |
+| 3   | svgforge   | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)          | 🟠🟠🟠     | XXE via an uploaded SVG (SVG is XML)                |
+| 4   | erroxxe    | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white) | 🟠🟠🟠     | Error-based XXE — exfiltrate via parser errors      |
+| 5   | xmlbridge  | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white) | 🔴🔴🔴🔴   | Capstone — blind / OOB XXE to a bundled listener    |
 
 </div>
 
@@ -441,13 +441,13 @@ gadget-chain capstone. Shows logic tampering → direct RCE → chained RCE.
 
 <div align="center">
 
-| #   | Lab         | Stack            | Difficulty | The flaw                                            |
-| --- | ----------- | :--------------: | ---------- | --------------------------------------------------- |
-| 1   | phpfeast    | PHP              | 🟢         | `unserialize` object injection — tamper `isAdmin`   |
-| 2   | picklejar   | Flask/Python     | 🟠🟠🟠     | `pickle.loads` on a user blob → near-direct RCE     |
-| 3   | nodepack    | Express          | 🟠🟠🟠     | Prototype pollution via `__proto__` merge           |
-| 4   | gadgetchain | PHP              | 🔴🔴🔴🔴   | POP chain across magic methods → RCE                |
-| 5   | beanbridge  | Java/Spring Boot | 🔴🔴🔴🔴   | Capstone — `readObject` + ysoserial gadget → RCE    |
+| #   | Lab         |                                                     Stack                                                      | Difficulty | The flaw                                            |
+| --- | ----------- | :-----------------------------------------------------------------------------------------------------------: | ---------- | --------------------------------------------------- |
+| 1   | phpfeast    | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)                           | 🟢         | `unserialize` object injection — tamper `isAdmin`   |
+| 2   | picklejar   | ![Flask/Python](https://img.shields.io/badge/Flask%2FPython-3776AB?style=flat&logo=python&logoColor=white)    | 🟠🟠🟠     | `pickle.loads` on a user blob → near-direct RCE     |
+| 3   | nodepack    | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)               | 🟠🟠🟠     | Prototype pollution via `__proto__` merge           |
+| 4   | gadgetchain | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)                           | 🔴🔴🔴🔴   | POP chain across magic methods → RCE                |
+| 5   | beanbridge  | ![Java/Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=springboot&logoColor=white) | 🔴🔴🔴🔴   | Capstone — `readObject` + ysoserial gadget → RCE    |
 
 </div>
 
@@ -467,14 +467,14 @@ a deliberate contrast with the rest of the catalogue. Mixed stacks, with a
 
 <div align="center">
 
-| #   | Lab          | Stack            | Difficulty | The flaw                                            |
-| --- | ------------ | :--------------: | ---------- | --------------------------------------------------- |
-| 1   | exposed      | nginx + app      | 🟢         | Exposed `.git` / dir listing / backup files         |
-| 2   | debugleak    | Flask            | 🟡🟡       | Debug mode / stack traces leak secrets → execution  |
-| 3   | corsloose    | Express          | 🟠🟠🟠     | Permissive CORS (reflects Origin + credentials)     |
-| 4   | headless     | Express          | 🟠🟠🟠     | Missing security headers + default credentials      |
-| 5   | staledep     | Java/Spring Boot | 🔴🔴🔴🔴   | Known-CVE component (A06) — the SCA flags it, you exploit it |
-| 6   | admindefault | mixed            | 🔴🔴🔴🔴   | Capstone — chained misconfig from recon to admin    |
+| #   | Lab          |                                                     Stack                                                      | Difficulty | The flaw                                            |
+| --- | ------------ | :-----------------------------------------------------------------------------------------------------------: | ---------- | --------------------------------------------------- |
+| 1   | exposed      | ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat&logo=nginx&logoColor=white)                     | 🟢         | Exposed `.git` / dir listing / backup files         |
+| 2   | debugleak    | ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white)                     | 🟡🟡       | Debug mode / stack traces leak secrets → execution  |
+| 3   | corsloose    | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)               | 🟠🟠🟠     | Permissive CORS (reflects Origin + credentials)     |
+| 4   | headless     | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)               | 🟠🟠🟠     | Missing security headers + default credentials      |
+| 5   | staledep     | ![Java/Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=springboot&logoColor=white) | 🔴🔴🔴🔴   | Known-CVE component (A06) — the SCA flags it, you exploit it |
+| 6   | admindefault | ![Mixed](https://img.shields.io/badge/Mixed-6E7681?style=flat)                                                | 🔴🔴🔴🔴   | Capstone — chained misconfig from recon to admin    |
 
 </div>
 
@@ -493,13 +493,13 @@ isolated coverage.
 
 <div align="center">
 
-| #   | Lab        | Stack   | Difficulty | The flaw                                            |
-| --- | ---------- | :-----: | ---------- | --------------------------------------------------- |
-| 1   | plaintea   | Express | 🟢         | Plaintext / trivially reversible storage            |
-| 2   | weakjwt    | NestJS  | 🟡🟡       | Weak JWT secret — crack it offline, forge admin     |
-| 3   | ecbreveal  | Express | 🟠🟠🟠     | AES-ECB leaks structure → forge a privileged token  |
-| 4   | fixediv    | Express | 🟠🟠🟠     | Fixed / reused IV or nonce → recover plaintext      |
-| 5   | hashcrack  | PHP     | 🟠🟠🟠     | Fast unsalted hashes — crack the dump               |
+| #   | Lab        |                                              Stack                                               | Difficulty | The flaw                                            |
+| --- | ---------- | :---------------------------------------------------------------------------------------------: | ---------- | --------------------------------------------------- |
+| 1   | plaintea   | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white) | 🟢         | Plaintext / trivially reversible storage            |
+| 2   | weakjwt    | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)    | 🟡🟡       | Weak JWT secret — crack it offline, forge admin     |
+| 3   | ecbreveal  | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white) | 🟠🟠🟠     | AES-ECB leaks structure → forge a privileged token  |
+| 4   | fixediv    | ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white) | 🟠🟠🟠     | Fixed / reused IV or nonce → recover plaintext      |
+| 5   | hashcrack  | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)             | 🟠🟠🟠     | Fast unsalted hashes — crack the dump               |
 
 </div>
 
@@ -520,14 +520,14 @@ A04 Insecure Design is demonstrated here (shopwave, clinicore).
 
 <div align="center">
 
-| #   | Box          | Sector / stack              | Difficulty | Chain (USER → PIVOT → ROOT)                              |
-| --- | ------------ | --------------------------- | ---------- | ------------------------------------------------------- |
-| 1   | forgeworks   | CI/CD · Flask+Node+Redis    | 🟠🟠🟠     | misconfig recon → SSTI → RCE → secrets → SSRF pivot      |
-| 2   | mediacrate   | CMS · PHP+MySQL             | 🟠🟠🟠     | IDOR → upload webshell → RCE → deserialization → admin   |
-| 3   | invoicehub   | B2B SaaS · NestJS+Postgres  | 🔴🔴🔴🔴   | XXE → SSRF → cred leak → 2nd-order SQLi → weak-JWT admin  |
-| 4   | legacyportal | legacy · Java/Spring+Node   | 🔴🔴🔴🔴   | known-CVE → RCE → broken auth → session hijack → domain   |
-| 5   | clinicore    | healthcare · NestJS+Next.js | 🔴🔴🔴🔴   | BAC → stored XSS → session theft → crypto failure → PII   |
-| 6   | shopwave     | e-commerce · Laravel+Vue    | 🔴🔴🔴🔴 | SQLi → auth bypass → price/BAC logic → payment takeover   |
+| #   | Box          | Sector      | Stack                                                                                                                                                                                                                                                                              | Difficulty | Chain (USER → PIVOT → ROOT)                              |
+| --- | ------------ | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------- |
+| 1   | forgeworks   | CI/CD       | ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat&logo=nodedotjs&logoColor=white) ![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white) | 🟠🟠🟠     | misconfig recon → SSTI → RCE → secrets → SSRF pivot      |
+| 2   | mediacrate   | CMS         | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)                                                                                                       | 🟠🟠🟠     | IDOR → upload webshell → RCE → deserialization → admin   |
+| 3   | invoicehub   | B2B SaaS    | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)                                                                               | 🔴🔴🔴🔴   | XXE → SSRF → cred leak → 2nd-order SQLi → weak-JWT admin  |
+| 4   | legacyportal | legacy      | ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=springboot&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat&logo=nodedotjs&logoColor=white)                                                                     | 🔴🔴🔴🔴   | known-CVE → RCE → broken auth → session hijack → domain   |
+| 5   | clinicore    | healthcare  | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white) ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)                                                                                     | 🔴🔴🔴🔴   | BAC → stored XSS → session theft → crypto failure → PII   |
+| 6   | shopwave     | e-commerce  | ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white) ![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=flat&logo=vuedotjs&logoColor=white)                                                                                     | 🔴🔴🔴🔴   | SQLi → auth bypass → price/BAC logic → payment takeover   |
 
 </div>
 
