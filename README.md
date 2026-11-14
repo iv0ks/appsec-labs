@@ -432,6 +432,33 @@ gadget-chain capstone. Shows logic tampering → direct RCE → chained RCE.
 
 <br>
 
+### 🧭 Series 15 — Security Misconfiguration & Vulnerable Components · _planned_
+
+Six apps on the two closely-related OWASP categories — **A05** (exposed `.git`,
+directory listing, debug mode, missing headers, permissive CORS, default creds)
+and **A06** (a bundled dependency with a known CVE). The series closest to real
+pentest recon: you exploit how the app is *deployed* and *what it ships*, not
+code you wrote. It's also the one where the **SCA/scanner is the protagonist** —
+a deliberate contrast with the rest of the catalogue. Mixed stacks, with a
+**Java/Spring Boot** known-CVE lab.
+
+<br>
+
+<div align="center">
+
+| #   | Lab          | Stack            | Difficulty | The flaw                                            |
+| --- | ------------ | :--------------: | ---------- | --------------------------------------------------- |
+| 1   | exposed      | nginx + app      | ⭐         | Exposed `.git` / dir listing / backup files         |
+| 2   | debugleak    | Flask            | ⭐⭐       | Debug mode / stack traces leak secrets → execution  |
+| 3   | corsloose    | Express          | ⭐⭐⭐     | Permissive CORS (reflects Origin + credentials)     |
+| 4   | headless     | Express          | ⭐⭐⭐     | Missing security headers + default credentials      |
+| 5   | staledep     | Java/Spring Boot | ⭐⭐⭐⭐   | Known-CVE component (A06) — the SCA flags it, you exploit it |
+| 6   | admindefault | mixed            | ⭐⭐⭐⭐   | Capstone — chained misconfig from recon to admin    |
+
+</div>
+
+<br>
+
 ## 🚀 Running a lab
 
 Every lab is a self-contained Docker Compose stack. In short:
