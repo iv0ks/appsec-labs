@@ -408,6 +408,30 @@ when egress is blocked) and OOB. Includes the **SVG-upload** vector. Built on
 
 <br>
 
+### 🧭 Series 14 — Insecure Deserialization · _planned_
+
+Five apps that deserialize untrusted data into objects — covering all four
+classic language flavours, since the format, trigger and gadget chain share
+nothing between them: **PHP** object injection and POP chains, **Python** pickle
+RCE, **Node** prototype pollution, and a **Java/Spring Boot** ysoserial
+gadget-chain capstone. Shows logic tampering → direct RCE → chained RCE.
+
+<br>
+
+<div align="center">
+
+| #   | Lab         | Stack            | Difficulty | The flaw                                            |
+| --- | ----------- | :--------------: | ---------- | --------------------------------------------------- |
+| 1   | phpfeast    | PHP              | ⭐         | `unserialize` object injection — tamper `isAdmin`   |
+| 2   | picklejar   | Flask/Python     | ⭐⭐⭐     | `pickle.loads` on a user blob → near-direct RCE     |
+| 3   | nodepack    | Express          | ⭐⭐⭐     | Prototype pollution via `__proto__` merge           |
+| 4   | gadgetchain | PHP              | ⭐⭐⭐⭐   | POP chain across magic methods → RCE                |
+| 5   | beanbridge  | Java/Spring Boot | ⭐⭐⭐⭐   | Capstone — `readObject` + ysoserial gadget → RCE    |
+
+</div>
+
+<br>
+
 ## 🚀 Running a lab
 
 Every lab is a self-contained Docker Compose stack. In short:
