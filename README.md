@@ -384,6 +384,30 @@ Built on **Flask**, **PHP/Twig**, **Laravel/Blade** and **Node/nunjucks**.
 
 <br>
 
+### 🧭 Series 13 — XML External Entities (XXE) · _planned_
+
+Five apps that parse user XML with external entities enabled — covering all
+three impacts (file read, SSRF, out-of-band exfiltration) and every blind
+technique: in-band, **error-based** (exfiltrate through parser error messages
+when egress is blocked) and OOB. Includes the **SVG-upload** vector. Built on
+**NestJS** with one **PHP** (SVG) lab; the OOB capstone reuses the mini-listener.
+
+<br>
+
+<div align="center">
+
+| #   | Lab        | Stack   | Difficulty | The flaw                                            |
+| --- | ---------- | :-----: | ---------- | --------------------------------------------------- |
+| 1   | feedparse  | NestJS  | ⭐         | In-band XXE — external entity reads a server file   |
+| 2   | billdrop   | NestJS  | ⭐⭐       | XXE → SSRF — the entity hits an internal URL         |
+| 3   | svgforge   | PHP     | ⭐⭐⭐     | XXE via an uploaded SVG (SVG is XML)                |
+| 4   | erroxxe    | NestJS  | ⭐⭐⭐     | Error-based XXE — exfiltrate via parser errors      |
+| 5   | xmlbridge  | NestJS  | ⭐⭐⭐⭐   | Capstone — blind / OOB XXE to a bundled listener    |
+
+</div>
+
+<br>
+
 ## 🚀 Running a lab
 
 Every lab is a self-contained Docker Compose stack. In short:
