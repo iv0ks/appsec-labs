@@ -1,9 +1,26 @@
 ## AppSec Labs
 
 ![Docker](https://img.shields.io/badge/Lab-Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![OWASP Top 10](https://img.shields.io/badge/OWASP-Top%2010-000000?style=flat&logo=owasp&logoColor=white)
+
 ![CWE-22](https://img.shields.io/badge/CWE--22-Path%20Traversal-red?style=flat)
-![CWE-284](https://img.shields.io/badge/CWE--284-Improper%20Access%20Control-red?style=flat)
 ![CWE-639](https://img.shields.io/badge/CWE--639-IDOR-red?style=flat)
+![CWE-284](https://img.shields.io/badge/CWE--284-Broken%20Access%20Control-red?style=flat)
+![CWE-89](https://img.shields.io/badge/CWE--89-SQL%20Injection-red?style=flat)
+![CWE-79](https://img.shields.io/badge/CWE--79-XSS-red?style=flat)
+![CWE-78](https://img.shields.io/badge/CWE--78-Command%20Injection-red?style=flat)
+![CWE-98](https://img.shields.io/badge/CWE--98-File%20Inclusion-red?style=flat)
+![CWE-918](https://img.shields.io/badge/CWE--918-SSRF-red?style=flat)
+![CWE-352](https://img.shields.io/badge/CWE--352-CSRF-red?style=flat)
+![CWE-287](https://img.shields.io/badge/CWE--287-Broken%20Authentication-red?style=flat)
+![CWE-384](https://img.shields.io/badge/CWE--384-Session%20Fixation-red?style=flat)
+![CWE-434](https://img.shields.io/badge/CWE--434-Unrestricted%20Upload-red?style=flat)
+![CWE-1336](https://img.shields.io/badge/CWE--1336-SSTI-red?style=flat)
+![CWE-611](https://img.shields.io/badge/CWE--611-XXE-red?style=flat)
+![CWE-502](https://img.shields.io/badge/CWE--502-Insecure%20Deserialization-red?style=flat)
+![CWE-16](https://img.shields.io/badge/CWE--16-Misconfiguration-red?style=flat)
+![CWE-1104](https://img.shields.io/badge/CWE--1104-Vulnerable%20Components-red?style=flat)
+![CWE-327](https://img.shields.io/badge/CWE--327-Cryptographic%20Failures-red?style=flat)
 
 A growing series of **intentionally vulnerable web apps** for hands-on web security practice. Each lab is a realistic, named "product" — not an obvious
 exercise — shipped as its own public repo: **dockerized** and published to **GHCR**.
