@@ -33,12 +33,12 @@ Each repo ships with a `SOLUTION.md` walkthrough (spoilers) and a flag of the fo
 
 | #   | Lab                                             |                                                       Stack                                                       | Difficulty | The broken defence                             |
 | --- | ----------------------------------------------- | :--------------------------------------------------------------------------------------------------------------: | ---------- | ---------------------------------------------- |
-| 1   | [fetchly](https://github.com/iv0ks/fetchly)     |         ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white)                |    ▰▱▱▱    | No filter at all — direct traversal            |
-| 2   | [snaptrail](https://github.com/iv0ks/snaptrail) |         ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white)                |    ▰▰▱▱    | A forced base-path prefix                      |
-| 3   | [deskmint](https://github.com/iv0ks/deskmint)   |         ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)                      |    ▰▰▰▱    | A non-recursive `../` strip (bypass: `....//`) |
-| 4   | [medialoft](https://github.com/iv0ks/medialoft) |         ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white)                |    ▰▰▰▱    | A file-extension check (`.png`)                |
-| 5   | [ziphaven](https://github.com/iv0ks/ziphaven)   |         ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)                      |    ▰▰▰▰    | A filter that runs **before** URL-decoding     |
-| 6   | [brewdocs](https://github.com/iv0ks/brewdocs)   |         ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)                      |    ▰▰▰▰    | A start-of-path check without normalisation    |
+| 1   | [fetchly](https://github.com/iv0ks/fetchly)     |         ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white)                |    🟢⚪⚪⚪    | No filter at all — direct traversal            |
+| 2   | [snaptrail](https://github.com/iv0ks/snaptrail) |         ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white)                |    🟡🟡⚪⚪    | A forced base-path prefix                      |
+| 3   | [deskmint](https://github.com/iv0ks/deskmint)   |         ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)                      |    🟠🟠🟠⚪    | A non-recursive `../` strip (bypass: `....//`) |
+| 4   | [medialoft](https://github.com/iv0ks/medialoft) |         ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white)                |    🟠🟠🟠⚪    | A file-extension check (`.png`)                |
+| 5   | [ziphaven](https://github.com/iv0ks/ziphaven)   |         ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)                      |    🔴🔴🔴🔴    | A filter that runs **before** URL-decoding     |
+| 6   | [brewdocs](https://github.com/iv0ks/brewdocs)   |         ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)                      |    🔴🔴🔴🔴    | A start-of-path check without normalisation    |
 
 </div>
 
