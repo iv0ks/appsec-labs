@@ -510,7 +510,7 @@ A04 Insecure Design is demonstrated here (shopwave, clinicore).
 | 3   | invoicehub   | B2B SaaS · NestJS+Postgres  | 🔴🔴🔴🔴   | XXE → SSRF → cred leak → 2nd-order SQLi → weak-JWT admin  |
 | 4   | legacyportal | legacy · Java/Spring+Node   | 🔴🔴🔴🔴   | known-CVE → RCE → broken auth → session hijack → domain   |
 | 5   | clinicore    | healthcare · NestJS+Next.js | 🔴🔴🔴🔴   | BAC → stored XSS → session theft → crypto failure → PII   |
-| 6   | shopwave     | e-commerce · Laravel+Vue    | 🔴🔴🔴🔴🟢 | SQLi → auth bypass → price/BAC logic → payment takeover   |
+| 6   | shopwave     | e-commerce · Laravel+Vue    | 🔴🔴🔴🔴 | SQLi → auth bypass → price/BAC logic → payment takeover   |
 
 </div>
 
