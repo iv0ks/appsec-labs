@@ -134,9 +134,13 @@ row the low-privilege user should never be able to read.
 
 <br>
 
-> The series below are **planned** — the design, stacks and lab names are fixed
-> (see [`APPSEC_LABS_ROADMAP.md`](APPSEC_LABS_ROADMAP.md)); the repos ship
-> progressively. Links will go live as each lab is published.
+> The series below are **planned** — all fully designed (stacks, lab names,
+> flags and exploitation chains are fixed; see
+> [`APPSEC_LABS_ROADMAP.md`](APPSEC_LABS_ROADMAP.md)); the repos ship
+> progressively and links go live as each lab is published. Together with Series
+> 1–3 they cover the **entire OWASP Top 10** in isolated practice (A04 Insecure
+> Design is demonstrated in the Series 17 capstone reports), and close with six
+> chained, full-application **pentest challenges**.
 
 <br>
 
@@ -481,6 +485,41 @@ isolated coverage.
 | 5   | hashcrack  | PHP     | ⭐⭐⭐     | Fast unsalted hashes — crack the dump               |
 
 </div>
+
+<br>
+
+### 🏁 Series 17 — Capstone · Full Challenges · _planned_
+
+The portfolio centerpiece: six complete, believable **multi-service
+applications**, each with a realistic exploitation **chain** along a kill chain
+(`recon → initial access → pivot → full compromise`). No served flag — you
+combine vulnerabilities from the earlier series. Every box ships **three staged
+flags** (`USER` → `PIVOT` → `ROOT`), runs on a **segmented Docker network**
+(DMZ vs internal) so the pivot is real, and includes a **consultancy-grade
+pentest report** (`REPORT.md`) with CVSS 3.1 findings and a kill-chain diagram.
+A04 Insecure Design is demonstrated here (shopwave, clinicore).
+
+<br>
+
+<div align="center">
+
+| #   | Box          | Sector / stack              | Difficulty | Chain (USER → PIVOT → ROOT)                              |
+| --- | ------------ | --------------------------- | ---------- | ------------------------------------------------------- |
+| 1   | forgeworks   | CI/CD · Flask+Node+Redis    | ⭐⭐⭐     | misconfig recon → SSTI → RCE → secrets → SSRF pivot      |
+| 2   | mediacrate   | CMS · PHP+MySQL             | ⭐⭐⭐     | IDOR → upload webshell → RCE → deserialization → admin   |
+| 3   | invoicehub   | B2B SaaS · NestJS+Postgres  | ⭐⭐⭐⭐   | XXE → SSRF → cred leak → 2nd-order SQLi → weak-JWT admin  |
+| 4   | legacyportal | legacy · Java/Spring+Node   | ⭐⭐⭐⭐   | known-CVE → RCE → broken auth → session hijack → domain   |
+| 5   | clinicore    | healthcare · NestJS+Next.js | ⭐⭐⭐⭐   | BAC → stored XSS → session theft → crypto failure → PII   |
+| 6   | shopwave     | e-commerce · Laravel+Vue    | ⭐⭐⭐⭐⭐ | SQLi → auth bypass → price/BAC logic → payment takeover   |
+
+</div>
+
+<br>
+
+> [!TIP]
+> Each box references the [pentest methodology guide](docs/pentest-methodology.md)
+> and a reusable [report template](REPORT_TEMPLATE.md) — because reporting a
+> finding well is half the job.
 
 <br>
 
