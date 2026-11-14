@@ -459,6 +459,31 @@ a deliberate contrast with the rest of the catalogue. Mixed stacks, with a
 
 <br>
 
+### 🧭 Series 16 — Cryptographic Failures · _planned_
+
+Five apps on misusing cryptography — not breaking AES, but plaintext storage, a
+weak JWT secret you crack offline, insecure **ECB** mode, a fixed/reused **IV**,
+and fast unsalted password hashing. The transversal lesson: *encrypt is not
+hash, and strong primitives used wrong are as insecure as none*. Built on
+**Node/NestJS** with a **PHP** hash-cracking lab. Completes the OWASP Top 10
+isolated coverage.
+
+<br>
+
+<div align="center">
+
+| #   | Lab        | Stack   | Difficulty | The flaw                                            |
+| --- | ---------- | :-----: | ---------- | --------------------------------------------------- |
+| 1   | plaintea   | Express | ⭐         | Plaintext / trivially reversible storage            |
+| 2   | weakjwt    | NestJS  | ⭐⭐       | Weak JWT secret — crack it offline, forge admin     |
+| 3   | ecbreveal  | Express | ⭐⭐⭐     | AES-ECB leaks structure → forge a privileged token  |
+| 4   | fixediv    | Express | ⭐⭐⭐     | Fixed / reused IV or nonce → recover plaintext      |
+| 5   | hashcrack  | PHP     | ⭐⭐⭐     | Fast unsalted hashes — crack the dump               |
+
+</div>
+
+<br>
+
 ## 🚀 Running a lab
 
 Every lab is a self-contained Docker Compose stack. In short:
